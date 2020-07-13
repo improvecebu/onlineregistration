@@ -18,3 +18,9 @@ create table users(
   password varchar(255)
 );
 
+create table apps(
+  id integer not null primary key auto_increment,
+  name varchar(255),
+  token varchar(255)
+);
+

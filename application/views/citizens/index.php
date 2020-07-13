@@ -1,23 +1,15 @@
 <h3>Citizens</h3>
 <p><?php echo anchor('citizens/add', 'Add Citizen'); ?></p>
-<table>
+<table class="table">
   <tr>
-    <th>Id</th>
-    <th>Last_name</th>
-    <th>First_name</th>
-    <th>Middle_name</th>
-    <th>Address</th>
+    <th>Citizen</th>
     <th>Phone</th>
     <th>Email</th>
     <th></th>
   </tr>
   <?php foreach ($citizens as $citizen): ?>
   <tr>
-    <td><?php echo $citizen->id; ?></td>
-    <td><?php echo $citizen->last_name; ?></td>
-    <td><?php echo $citizen->first_name; ?></td>
-    <td><?php echo $citizen->middle_name; ?></td>
-    <td><?php echo $citizen->address; ?></td>
+    <td><?php echo to_name($citizen); ?></td>
     <td><?php echo $citizen->phone; ?></td>
     <td><?php echo $citizen->email; ?></td>
     <td>

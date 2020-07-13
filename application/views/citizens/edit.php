@@ -1,9 +1,5 @@
 <h3>Edit citizen</h3>
 <?php echo form_open('citizens/edit/' . $citizen->id); ?>
-<p>Id<br>
-  <?php echo form_input('id', $citizen->id); ?>
-  <?php echo form_error('id'); ?>
-</p>
 <p>Last_name<br>
   <?php echo form_input('last_name', $citizen->last_name); ?>
   <?php echo form_error('last_name'); ?>
@@ -20,6 +16,9 @@
   <?php echo form_input('address', $citizen->address); ?>
   <?php echo form_error('address'); ?>
 </p>
+<p>Barangay<br>
+  <?php echo form_dropdown('barangay', array(), '', 'id="barangays"'); ?>
+</p>
 <p>Phone<br>
   <?php echo form_input('phone', $citizen->phone); ?>
   <?php echo form_error('phone'); ?>
@@ -33,3 +32,19 @@
   or <?php echo anchor('citizens', 'cancel'); ?>
 </p>
 <?php echo form_close(); ?>
+
+<script src="http://opendataph.scoollabs.com/client.js?v=<?php echo guid(); ?>"></script>
+<script>
+  var url = 'http://opendataph.scoollabs.com';
+  $(function() {
+    var municipality = 'Cebu City';
+    OpenDataPH.getBarangays(url, municipality, function(response) {
+      console.log(response);
+      var barangays = $('#barangays');
+      barangays.empty();
+      $(response).each(function(i, b) {
+        barangays.append('<option value="' + b.barangay + '">' + b.barangay + '</option>');
+      });
+    }, function() {});
+  });
+</script>
