@@ -13,7 +13,7 @@
   <?php echo form_error('middle_name'); ?>
 </p>
 <p>Address<br>
-  <?php echo form_input('address', $this->input->post('address')); ?>
+  <?php echo form_textarea('address', $this->input->post('address')); ?>
   <?php echo form_error('address'); ?>
 </p>
 <p>Barangay<br>
