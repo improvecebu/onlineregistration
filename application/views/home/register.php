@@ -16,6 +16,9 @@
   <?php echo form_input('address', $this->input->post('address')); ?>
   <?php echo form_error('address'); ?>
 </p>
+<p>Barangay<br>
+  <?php echo form_dropdown('barangay', array(), '', 'id="barangays"'); ?>
+</p>
 <p>Phone<br>
   <?php echo form_input('phone', $this->input->post('phone')); ?>
   <?php echo form_error('phone'); ?>
@@ -29,3 +32,19 @@
   or <?php echo anchor('citizens', 'cancel'); ?>
 </p>
 <?php echo form_close(); ?>
+
+<script src="http://opendataph.scoollabs.com/client.js?v=<?php echo guid(); ?>"></script>
+<script>
+  var url = 'http://opendataph.scoollabs.com';
+  $(function() {
+    var municipality = 'Cebu City';
+    OpenDataPH.getBarangays(url, municipality, function(response) {
+      console.log(response);
+      var barangays = $('#barangays');
+      barangays.empty();
+      $(response).each(function(i, b) {
+        barangays.append('<option value="' + b.barangay + '">' + b.barangay + '</option>');
+      });
+    }, function() {});
+  });
+</script>
