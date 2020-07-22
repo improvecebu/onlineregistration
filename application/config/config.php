@@ -28,6 +28,8 @@ date_default_timezone_set('Asia/Manila');
 $config['base_url'] = 'http://localhost:8888/improvecebu/onlineregistration';
 $config['enable_profiler'] = true;
 
+$config['cryptor_key'] = 'YOUR_CRYPTOR_KEY';
+
 /*
   |--------------------------------------------------------------------------
   | Index File
